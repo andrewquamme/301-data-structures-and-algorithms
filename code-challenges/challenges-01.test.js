@@ -82,7 +82,7 @@ Write a function named removeWithForEach that produces the same output as challe
 
 const removeWithForEach = (arr, callback) => {
   // Solution code here...
-  arr.forEach( (value, idx) => {
+  arr.forEach( (value) => {
     callback(value, arr);
   });
   return(arr);
@@ -100,7 +100,13 @@ This anonymous function should accept up to three arguments: the element, the in
 
 const removeWithAnon = (arr) => {
   // Solution code here...
-}
+  arr.forEach( (value, idx, arr) => {
+    if ( (value % 3) === 2 ) {
+      arr.pop();
+    };
+  });
+  return(arr);
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
