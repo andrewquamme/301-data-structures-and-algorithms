@@ -62,6 +62,7 @@ Do not use the vertical bar (pipe) in your pattern.
 const matchMonth = (input) => {
   // Solution code here...
   // return input.toString().match(/(\boctober\b)|(\bOctober\b)|(\boct\b)|(\bOct\b)/gm)
+  return input.toString().test(/^[Oo]ct9(ober)/);
 };
 
 /* ------------------------------------------------------------------------------------------------
