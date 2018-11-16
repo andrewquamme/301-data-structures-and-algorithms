@@ -14,6 +14,7 @@ For example:
 
 const isNum = (input) => {
   // Solution code here...
+  return input.toString().match(/\d/gm);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -26,6 +27,7 @@ Return an array containing all the matches.
 
 const isCapitalized = (str) => {
   // Solution code here...
+  return str.match(/[A-Z]\w+/gm)
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -36,6 +38,13 @@ Write a function named citiesAtoJ that takes in an array of city names and uses 
 
 const citiesAtoJ = (arr) => {
   // Solution code here...
+  let matchCities = [];
+  arr.forEach((city) => {
+    if (city.match(/^[A-J]\w+/gm)) {
+      matchCities.push(city);
+    }
+  });
+  return matchCities;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -52,6 +61,7 @@ Do not use the vertical bar (pipe) in your pattern.
 
 const matchMonth = (input) => {
   // Solution code here...
+  // return input.toString().match(/(\boctober\b)|(\bOctober\b)|(\boct\b)|(\bOct\b)/gm)
 };
 
 /* ------------------------------------------------------------------------------------------------
