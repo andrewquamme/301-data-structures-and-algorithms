@@ -19,7 +19,7 @@ const howMuchPencil = (str) => {
   result.push(str);
   str = str.split('');
   for (let i = str.length; i > 0; i--) {
-    str.shift();
+    str.splice(0,1);
     result.push( str.join('') );
   };
   return result;
