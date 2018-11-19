@@ -16,7 +16,7 @@ For example, if the input is 'Welcome', the output will be:
 const howMuchPencil = (str) => {
   let result = [];
   // Solution code here...
-  result.push(str)
+  result.push(str);
   str = str.split('');
   for (let i = str.length; i > 0; i--) {
     str.shift();
@@ -65,7 +65,7 @@ const gruffaloCrumble = {
     '1 pound baking powder',
     '1 pound cinnamon',
     '6 gallons melted butter',
-    '2 gallons fresh water',
+    '2 gallons fresh water'
   ],
   steps: [
     'Pre-heat a large oven to 375',
@@ -76,9 +76,9 @@ const gruffaloCrumble = {
     'Combine gruffalo compote with water to maintain moisture in the oven',
     'Fold together remaining ingredients to make the crisp',
     'Spread the crisp evenly over the gruffalo mixture',
-    'Bake for 12-15 hours',
-  ]
-}
+    'Bake for 12-15 hours'
+  ],
+};
 
 
 const listFoods = (recipe) => {
@@ -169,6 +169,14 @@ removeLastCharacters('Gregor', 9) returns ''
 
 const removeLastCharacters = (str, numberOfCharacters) => {
   // Solution code here...
+  if (numberOfCharacters >= 0) {
+    if (numberOfCharacters > str.length) {
+      str = '';
+    } else {
+      str = str.slice(0 , -(numberOfCharacters) );
+    }
+  }
+  return str;
 };
 
 
