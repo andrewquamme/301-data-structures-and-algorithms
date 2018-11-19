@@ -86,9 +86,8 @@ const listFoods = (recipe) => {
   // Solution code here...
   recipe.ingredients.forEach( (ingredient) => {
 
-    let item = ingredient.slice(ingredient.indexOf(' ') + 1);
-    item = item.slice(item.indexOf(' ') + 1);
-    result.push(item);
+    ingredient = ingredient.slice(ingredient.indexOf(' ') + 1);
+    result.push(ingredient.slice(ingredient.indexOf(' ') + 1));
   });
   return result;
 };
@@ -104,8 +103,13 @@ You may also use other string or array methods.
 const splitFoods = (recipe) => {
   let result = [];
   // Solution code here...
+  recipe.ingredients.forEach( (ingredient) => {
+    result.push(ingredient.split(' ')
+      .splice(2)
+      .join(' '));
+  });
   return result;
-}
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
