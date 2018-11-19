@@ -16,6 +16,12 @@ For example, if the input is 'Welcome', the output will be:
 const howMuchPencil = (str) => {
   let result = [];
   // Solution code here...
+  result.push(str);
+  str = str.split('');
+  for (let i = str.length; i > 0; i--) {
+    str.shift();
+    result.push( str.join('') );
+  };
   return result;
 };
 
@@ -29,6 +35,8 @@ For example, wordsToCharList('gregor') returns ['g','r','e','g','o','r'].
 
 const wordsToCharList = (arr) => {
   // Solution code here...
+  arr = arr.split('');
+  return arr;
 };
 
 
@@ -57,7 +65,7 @@ const gruffaloCrumble = {
     '1 pound baking powder',
     '1 pound cinnamon',
     '6 gallons melted butter',
-    '2 gallons fresh water',
+    '2 gallons fresh water'
   ],
   steps: [
     'Pre-heat a large oven to 375',
@@ -68,16 +76,21 @@ const gruffaloCrumble = {
     'Combine gruffalo compote with water to maintain moisture in the oven',
     'Fold together remaining ingredients to make the crisp',
     'Spread the crisp evenly over the gruffalo mixture',
-    'Bake for 12-15 hours',
-  ]
-}
+    'Bake for 12-15 hours'
+  ],
+};
 
 
 const listFoods = (recipe) => {
   let result = [];
   // Solution code here...
+  recipe.ingredients.forEach( (ingredient) => {
+
+    ingredient = ingredient.slice(ingredient.indexOf(' ') + 1);
+    result.push(ingredient.slice(ingredient.indexOf(' ') + 1));
+  });
   return result;
-}
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -90,8 +103,13 @@ You may also use other string or array methods.
 const splitFoods = (recipe) => {
   let result = [];
   // Solution code here...
+  recipe.ingredients.forEach( (ingredient) => {
+    result.push(ingredient.split(' ')
+      .splice(2)
+      .join(' '));
+  });
   return result;
-}
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
@@ -106,8 +124,11 @@ Return a new array containing just the verbs. For example, ['Mix until evenly di
 const stepActions = (recipe) => {
   let result = [];
   // Solution code here...
+  recipe.steps.forEach((step) => {
+    result.push(step.split(' ')[0]);
+  });
   return result;
-}
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
@@ -124,6 +145,11 @@ For example:
 
 const removeEvenValues = (arr) => {
   // Solution code here...
+  for (let i = arr.length; i >= 0; i--) {
+    if (arr[i] % 2 === 0) {
+      arr.splice(i, 1);
+    };
+  };
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -143,6 +169,14 @@ removeLastCharacters('Gregor', 9) returns ''
 
 const removeLastCharacters = (str, numberOfCharacters) => {
   // Solution code here...
+  if (numberOfCharacters >= 0) {
+    if (numberOfCharacters > str.length) {
+      str = '';
+    } else {
+      str = str.slice(0 , -(numberOfCharacters) );
+    }
+  }
+  return str;
 };
 
 
@@ -155,6 +189,10 @@ Write a function named totalSumCSV that, given a string of comma-separated value
 const totalSumCSV = (str) => {
   let total = 0;
   // Solution code here...
+  str = str.split(',');
+  str.forEach( (value) => {
+    total += parseInt(value);
+  });
   return total;
 };
 
