@@ -102,7 +102,16 @@ hasChildrenValues(characters, 'Eddard') will return false
 
 const hasChildrenValues = (arr, character) => {
   // Solution code here...
-}
+  for (let obj in Object.values(arr)) {
+    if (character === arr[obj].name) {
+      if (arr[obj].children.length > 0) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  }
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
@@ -111,10 +120,18 @@ Write a function named hasChildrenEntries that is similar to your hasChildrenVal
 
 The input and output of this function are the same as the input and output from challenge 4.
 ------------------------------------------------------------------------------------------------ */
-
 const hasChildrenEntries = (arr, character) => {
   // Solution code here...
-}
+  for (let obj in Object.entries(arr)) {
+    if (character === arr[obj].name) {
+      if (arr[obj].children.length > 0) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  }
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6 - Stretch Goal
