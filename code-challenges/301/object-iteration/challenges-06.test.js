@@ -100,17 +100,27 @@ hasChildrenValues(characters, 'Sansa') will return true
 hasChildrenValues(characters, 'Eddard') will return false
 ------------------------------------------------------------------------------------------------ */
 
+// const hasChildrenValues = (arr, character) => {
+//   // Solution code here...
+//   for (let obj in Object.values(arr)) {
+//     if (character === arr[obj].name) {
+//       if (arr[obj].children.length > 0) {
+//         return true;
+//       } else {
+//         return false;
+//       }
+//     }
+//   }
+// };
+
 const hasChildrenValues = (arr, character) => {
-  // Solution code here...
-  for (let obj in Object.values(arr)) {
-    if (character === arr[obj].name) {
-      if (arr[obj].children.length > 0) {
-        return true;
-      } else {
-        return false;
-      }
+  let hasChildren;
+  Object.values(arr).forEach(obj => {
+    if (obj.name === character) {
+      hasChildren = obj.children.length > 0 ? true : false;
     }
-  }
+  });
+  return hasChildren;
 };
 
 /* ------------------------------------------------------------------------------------------------
