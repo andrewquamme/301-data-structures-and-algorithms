@@ -10,11 +10,7 @@ Note: You may not use the array's built-in length property.
 
 const countNumberOfElements = (arr) => {
   // Solution code here...
-  let count = arr.reduce ( counter => {
-    counter++;
-    return counter;
-  }, 0);
-  return count;
+  return arr.reduce( counter => counter + 1, 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -90,8 +86,9 @@ Write a function named reversedString that takes in a string and returns a strin
 Note: You must use reduce for this challenge. You may not use the built-in .reverse() string method.
 ------------------------------------------------------------------------------------------------ */
 
-const reversedString = (arr) => {
+const reversedString = (str) => {
   // Solution code here...
+  return str.split('').reduce( (reversed, char) => char + reversed, '');
 };
 
 /* ------------------------------------------------------------------------------------------------
