@@ -71,11 +71,20 @@ const errands = [
   { store: 'Pet store',
     items: [ { name: 'Cans of food', quantity: 8 }, { name: 'Treats', quantity: 24 }, { name: 'Leash', quantity: 1 } ]
   }
-]
+];
 
 const howManyTreats = (arr) => {
   // Solution code here...
-}
+  let treats = 0;
+  for(let i = 0; i < arr.length; i++) {
+    for(let j = 0; j < arr[i].items.length; j++) {
+      if(arr[i].items[j].name === 'Treats') {
+        treats += arr[i].items[j].quantity;
+      }
+    }
+  }
+  return treats;
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
