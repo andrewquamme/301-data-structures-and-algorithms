@@ -25,7 +25,7 @@ const cookieStores = [firstPike, seaTac, seattleCenter, capHill, alkiBeach];
 const grandTotal = (stores) => {
   // Solution code here...
   const totals = new Array(hoursOpen.length).fill(0);
-  for (let i = 0; i < cookieStores.length; i++) {
+  for (let i = 0; i < stores.length; i++) {
     for (let j = 0; j < hoursOpen.length; j++) {
       totals[j] += stores[i][j];
     }
