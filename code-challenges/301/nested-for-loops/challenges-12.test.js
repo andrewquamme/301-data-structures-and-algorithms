@@ -170,12 +170,24 @@ let lowestWeeklyTemperatureData = [
   [33, 64, 58, 65, 71, 57, 60],
   [40, 45, 33, 53, 44, 59, 48],
   [55, 54, 60, 53, 59, 57, 61],
-  [65, 56, 55, 52, 55, 62, 57],
+  [65, 56, 55, 52, 55, 62, 57]
 ];
 
 const lowestWeeklyAverage = (weather) => {
   // Solution code here...
-}
+  let lowest = 999;
+  for(let i = 0; i < weather.length; i ++) {
+    let temp = 0;
+    for(let j = 0; j < weather[i].length; j ++) {
+      temp += weather[i][j];
+    }
+    let weekly = temp / weather[i].length;
+    if (weekly < lowest) {
+      lowest = weekly;
+    }
+  }
+  return lowest;
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 8
