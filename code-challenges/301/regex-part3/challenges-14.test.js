@@ -11,9 +11,9 @@ For example, ['apple', 'banana', 'MacGyver'] returns ['Apple', 'Banana', 'MacGyv
 const toTitleCase = (arr) => {
   // Solution code here...
   let results = [];
-  arr.forEach( str => {
+  arr.forEach(str => {
     results.push(str.charAt(0).toUpperCase() + str.slice(1));
-  })
+  });
   return results;
 };
 
@@ -45,7 +45,7 @@ let starWarsData = [{
   skin_color: 'gold',
   eye_color: 'yellow',
   birth_year: '112BBY',
-  gender: 'n/a'
+  gender: 'n/a',
 },
 {
   name: 'R2-D2',
@@ -55,7 +55,7 @@ let starWarsData = [{
   skin_color: 'white, blue',
   eye_color: 'red',
   birth_year: '33BBY',
-  gender: 'n/a'
+  gender: 'n/a',
 },
 {
   name: 'Darth Vader',
@@ -65,7 +65,7 @@ let starWarsData = [{
   skin_color: 'white',
   eye_color: 'yellow',
   birth_year: '41.9BBY',
-  gender: 'male'
+  gender: 'male',
 },
 {
   name: 'Leia Organa',
@@ -75,7 +75,7 @@ let starWarsData = [{
   skin_color: 'light',
   eye_color: 'brown',
   birth_year: '19BBY',
-  gender: 'female'
+  gender: 'female',
 },
 {
   name: 'Pex Kylar',
@@ -85,19 +85,19 @@ let starWarsData = [{
   skin_color: 'brown',
   eye_color: 'none',
   birth_year: '27BBY',
-  gender: 'n/a'
+  gender: 'n/a',
 }]
 
 let biggerThanLuke = (arr) => {
   // Solution code here...
   let massOfLuke = 0;
-  arr.forEach( character => {
+  arr.forEach(character => {
     if (character.name === 'Luke Skywalker') {
       massOfLuke = character.mass;
     };
   });
   let results = '';
-  arr.forEach( character => {
+  arr.forEach(character => {
     if (parseInt(character.mass) > massOfLuke) {
       results += ` - ${character.name}`;
     };
@@ -121,6 +121,25 @@ This data could be could be sorted by name or price.
 
 const sortBy = (property, arr) => {
   // Solution code here...
+  switch (property) {
+  case 'price':
+    return arr.sort((a, b) => a[property] - b[property]);
+    break;
+  case 'name':
+    return arr.sort((a, b) => {
+      a = a[property].toUpperCase();
+      b = b[property].toUpperCase();
+      if (a < b) {
+        return -1;
+      }
+      if (a > b) {
+        return 1;
+      }
+      return 0;
+    });
+    break;
+  default:
+  };
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -136,8 +155,9 @@ https://secure.com returns true because the URL is secure
 https:/missingslash.org returns false because the URL is malformed
 ------------------------------------------------------------------------------------------------ */
 const isSecure = (url) => {
-// Solution code here...
-}
+  // Solution code here...
+  return (/^(?:https:\/\/)\w+.com/).test(url);
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5 - Stretch Goal
@@ -176,7 +196,7 @@ Run your tests from the console: jest challenge-14.test.js
 describe('Testing challenge 1', () => {
   test('It should convert each word to title case', () => {
     const words = ['apple', 'banana', 'MacGyver'];
-    expect(toTitleCase(words)).toStrictEqual(['Apple','Banana','MacGyver']);
+    expect(toTitleCase(words)).toStrictEqual(['Apple', 'Banana', 'MacGyver']);
 
     expect(toTitleCase([])).toStrictEqual([]);
   });
@@ -193,13 +213,13 @@ describe('Testing challenge 3', () => {
   test('It should sort items by a price', () => {
 
     expect(sortBy('price', [
-      {name: 'Sweatshirt', price: 45},
-      {name: 'Bookmark', price: 2.50},
-      {name: 'Tote bag', price: 15}
+      { name: 'Sweatshirt', price: 45 },
+      { name: 'Bookmark', price: 2.50 },
+      { name: 'Tote bag', price: 15 }
     ])).toStrictEqual([
-      {name: 'Bookmark', price: 2.50},
-      {name: 'Tote bag', price: 15},
-      {name: 'Sweatshirt', price: 45},
+      { name: 'Bookmark', price: 2.50 },
+      { name: 'Tote bag', price: 15 },
+      { name: 'Sweatshirt', price: 45 },
     ]);
 
   });
@@ -207,13 +227,13 @@ describe('Testing challenge 3', () => {
   test('It should sort items by name', () => {
 
     expect(sortBy('name', [
-      {name: 'Sweatshirt', price: 45},
-      {name: 'Bookmark', price: 2.50},
-      {name: 'Tote bag', price: 15}
+      { name: 'Sweatshirt', price: 45 },
+      { name: 'Bookmark', price: 2.50 },
+      { name: 'Tote bag', price: 15 }
     ])).toStrictEqual([
-      {name: 'Bookmark', price: 2.50},
-      {name: 'Sweatshirt', price: 45},
-      {name: 'Tote bag', price: 15},
+      { name: 'Bookmark', price: 2.50 },
+      { name: 'Sweatshirt', price: 45 },
+      { name: 'Tote bag', price: 15 },
     ]);
   });
 });
@@ -221,9 +241,9 @@ describe('Testing challenge 3', () => {
 describe('Testing challenge 4', () => {
   test('It should check if url is https', () => {
 
-    expect(isSecure('http://www.insecure.com')).toBe(false); 
-    expect(isSecure('https://secure.com')).toBe(true); 
-    expect(isSecure('https:/missingslash.org')).toBe(false); 
+    expect(isSecure('http://www.insecure.com')).toBe(false);
+    expect(isSecure('https://secure.com')).toBe(true);
+    expect(isSecure('https:/missingslash.org')).toBe(false);
   });
 });
 
